@@ -13,6 +13,7 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "langchain": "^0.2.16",
     "vue": "^3.4.29"
   },
   "devDependencies": {
