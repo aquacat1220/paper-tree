@@ -1,20 +1,26 @@
 {
-	"name": "dev-container-template",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"args": {
-			"host_username": "${localEnv:USERNAME}"
-		}
-	},
+  "name": "dev-container-template",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "args": {
+      "host_username": "${localEnv:USERNAME}"
+    }
+  },
 
-	"containerUser": "${localEnv:USERNAME}",
+  "containerUser": "${localEnv:USERNAME}",
 
-	"workspaceMount": "source=${localWorkspaceFolder},target=/home/${localEnv:USERNAME}/${localWorkspaceFolderBasename},type=bind",
-	"workspaceFolder": "/home/${localEnv:USERNAME}/${localWorkspaceFolderBasename}",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/home/${localEnv:USERNAME}/${localWorkspaceFolderBasename},type=bind",
+  "workspaceFolder": "/home/${localEnv:USERNAME}/${localWorkspaceFolderBasename}",
 
-	"customizations": {
-		"vscode": {
-			"extensions": [ "eamodio.gitlens", "vue.volar", "dbaeumer.vscode-eslint", "esbenp.prettier-vscode" ]
-		}
-	}
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "eamodio.gitlens",
+        "vue.volar",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
 }
