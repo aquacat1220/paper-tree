@@ -21,6 +21,8 @@ const onKeyDown = (event: KeyboardEvent) => {
 
 // Have the textarea autosize.
 const { textarea, input } = useTextareaAutosize()
+// `input.value`'s initial value is `undefined`. Set it to `''` so that the button recognizes it as empty input.
+input.value = ''
 </script>
 
 <template>
@@ -35,7 +37,9 @@ const { textarea, input } = useTextareaAutosize()
       ></textarea>
     </div>
     <button
-      class="mr-2 size-10 flex-none rounded-full bg-white p-2 hover:bg-neutral-200"
+      class="mr-2 size-10 flex-none rounded-full p-2"
+      :class="input === '' ? ['bg-neutral-500'] : ['bg-white', 'hover:bg-neutral-300']"
+      :disabled="input === ''"
       @click="sendInput"
     >
       <svg class="fill-neutral-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
