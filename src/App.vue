@@ -1,6 +1,6 @@
 <script setup lang="ts"></script>
 
-<template class="">
+<template>
   <div class="flex h-screen w-screen flex-col items-center">
     <div class="flex h-10 w-full items-center justify-center bg-neutral-800">
       <div class="flex basis-[50rem] justify-between">
