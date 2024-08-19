@@ -1,4 +1,6 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import LlmSimple from './llm/LlmSimple.vue'
+</script>
 
 <template>
   <div class="flex h-screen w-screen flex-col items-center overflow-hidden bg-neutral-900">
@@ -8,5 +10,6 @@
         <div class="p-2 text-xl font-bold text-white">@play/lc/simple</div>
       </div>
     </div>
+    <LlmSimple class="w-full max-w-[75rem] grow" />
   </div>
 </template>
