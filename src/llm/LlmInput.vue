@@ -27,7 +27,7 @@ input.value = ''
 </script>
 
 <template>
-  <div class="flex min-h-14 min-w-[30rem] items-center rounded-[1.75rem] bg-neutral-700">
+  <div class="flex min-h-[3.5rem] min-w-[30rem] items-center rounded-[1.75rem] bg-neutral-700">
     <div class="flex h-full shrink-0 grow basis-[20rem] items-center px-4 py-2">
       <textarea
         class="max-h-full grow basis-0 resize-none bg-neutral-700 text-base text-white placeholder:text-base focus-visible:outline-none"
@@ -38,7 +38,7 @@ input.value = ''
       ></textarea>
     </div>
     <button
-      class="mr-2 size-10 flex-none rounded-full p-2"
+      class="mr-2 size-[2.5rem] flex-none rounded-full p-2"
       :class="input === '' ? ['bg-neutral-500'] : ['bg-white', 'hover:bg-neutral-300']"
       :disabled="input === ''"
       @click="sendInput"

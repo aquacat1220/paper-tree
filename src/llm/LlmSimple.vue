@@ -14,8 +14,8 @@ const history = ref([
 </script>
 
 <template>
-  <div class="flex min-h-[15rem] flex-col items-center">
-    <LlmHistory class="w-full max-w-[75rem] grow" :history="history" />
+  <div class="flex min-h-[15rem] min-w-[30rem] flex-col items-center">
+    <LlmHistory class="w-full max-w-[75rem] grow basis-0" :history="history" />
     <LlmInput class="mb-14 max-h-[20rem] w-full max-w-[50rem] flex-none" @sent="onSent" />
   </div>
 </template>
