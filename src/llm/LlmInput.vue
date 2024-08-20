@@ -2,13 +2,13 @@
 import { useTextareaAutosize } from '@vueuse/core'
 
 const emit = defineEmits<{
-  sent: [input: string]
+  input: [input: string]
 }>()
 
 // Callback to trigger `sent` event, so the parent can react accordingly.
-const sendInput = () => {
+const onInput = () => {
   if (input.value === '') return
-  emit('sent', input.value)
+  emit('input', input.value)
   input.value = ''
 }
 
@@ -16,7 +16,7 @@ const sendInput = () => {
 const onKeyDown = (event: KeyboardEvent) => {
   if (event.key === 'Enter' && !event.shiftKey) {
     event.preventDefault()
-    sendInput()
+    onInput()
   }
 }
 
@@ -41,7 +41,7 @@ input.value = ''
       class="mr-2 size-[2.5rem] flex-none rounded-full p-2"
       :class="input === '' ? ['bg-neutral-500'] : ['bg-white', 'hover:bg-neutral-300']"
       :disabled="input === ''"
-      @click="sendInput"
+      @click="onInput"
     >
       <svg class="fill-neutral-700" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
         <g id="_01_align_center" data-name="01 align center">
