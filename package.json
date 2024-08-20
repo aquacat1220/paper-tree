@@ -15,7 +15,8 @@
   "dependencies": {
     "@vueuse/core": "^11.0.1",
     "langchain": "^0.2.16",
-    "vue": "^3.4.29"
+    "vue": "^3.4.29",
+    "vue-cookies": "^1.8.4"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.8.0",
