@@ -7,6 +7,7 @@ const emit = defineEmits<{
 
 // Callback to trigger `sent` event, so the parent can react accordingly.
 const sendInput = () => {
+  if (input.value === '') return
   emit('sent', input.value)
   input.value = ''
 }
