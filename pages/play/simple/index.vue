@@ -10,18 +10,13 @@ import {
 const openaiApiKey = useCookie("openaiApiKey");
 openaiApiKey.value = openaiApiKey.value || "";
 
-const setApiKey = (input: string) => {
-  const apiKey = input.trim();
-  openaiApiKey.value = apiKey;
-};
-
 const forgetApiKey = () => {
   openaiApiKey.value = "";
 };
 
 const createSimpleChain = () => {
   const chatPrompt = ChatPromptTemplate.fromMessages([
-    ["system", "Translate the following into korean:"],
+    ["system", "You are a helpful assistant."],
     ["human", "{input}"],
   ]);
 
@@ -75,7 +70,7 @@ const invokeChain = async (input: string) => {
     class="flex min-h-[15rem] min-w-[30rem] flex-col items-center justify-center"
   >
     <template v-if="openaiApiKey === ''">
-      <LlmApiKeyInput class="basis-[20rem]" @input="setApiKey" />
+      <LlmApiKeyInput class="basis-[20rem]" />
     </template>
     <template v-else>
       <LlmChat
