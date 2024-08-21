@@ -13,7 +13,7 @@ const onKeyDown = (event: KeyboardEvent) => {
 </script>
 
 <template>
-  <div class="flex min-h-[15rem] min-w-[30rem] items-center justify-center">
+  <div class="flex min-h-[15rem] min-w-[25rem] items-center justify-center">
     <UTextarea
       v-model="input"
       class="flex h-full grow basis-0 items-center justify-center"

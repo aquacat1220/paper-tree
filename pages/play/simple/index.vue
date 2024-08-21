@@ -72,21 +72,21 @@ const invokeChain = async (input: string) => {
 
 <template>
   <div
-    class="flex min-h-[15rem] min-w-[30rem] flex-col items-center justify-center"
+    class="flex min-h-[20rem] min-w-[30rem] flex-col items-center justify-center gap-4 px-4 pb-4"
   >
     <template v-if="openaiApiKey === ''">
-      <LlmApiKeyInput class="basis-[20rem]" />
+      <LlmApiKeyInput class="w-full max-w-[40rem] basis-[20rem]" />
     </template>
     <template v-else>
       <LlmChat
         :messages="history"
         placeholder="Ask LLM"
         :loading
-        class="mb-4 w-full max-w-[50rem] grow basis-0"
+        class="w-full max-w-[50rem] grow basis-0"
         @send="invokeChain"
       />
       <UButton
-        class="mb-4 flex-none"
+        class="flex-none"
         size="xl"
         label="Forget OpenAI API key"
         variant="link"

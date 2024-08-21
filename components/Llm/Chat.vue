@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import VueMarkdown from "vue-markdown-render";
-
 const props = defineProps<{
   messages: { role: string; content: string }[]; // History of messages to display.
   placeholder: string; // Placeholder for chat input.
