@@ -38,7 +38,12 @@ const createSimpleChain = () => {
 
 const simpleChain = computed(createSimpleChain);
 
-const history = ref([] as { role: string; content: string }[]);
+const history = ref(
+  [] as {
+    role: string;
+    content: string;
+  }[],
+);
 const loading = ref(false);
 
 const invokeChain = async (input: string) => {

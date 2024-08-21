@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import VueMarkdown from "vue-markdown-render";
+
 const props = defineProps<{
   messages: { role: string; content: string }[]; // History of messages to display.
   placeholder: string; // Placeholder for chat input.
@@ -31,11 +33,11 @@ const onKeyDown = (event: KeyboardEvent) => {
 <template>
   <div class="flex min-h-[15rem] min-w-[20rem] flex-col items-center">
     <div
-      class="flex w-full max-w-[75rem] grow basis-0 flex-col items-center justify-end overflow-auto"
+      class="flex w-full max-w-[75rem] grow basis-0 flex-col items-center justify-start overflow-auto"
     >
       <template v-for="message in messages" :key="message.content">
         <div
-          class="bg-primary-500 dark:bg-primary-500 my-4 max-w-[70%] rounded-[1.75rem] px-4 py-3 text-white dark:text-white"
+          class="bg-primary-500 dark:bg-primary-500 my-4 max-w-[70%] whitespace-pre-wrap break-words rounded-[1.75rem] px-4 py-3 text-white dark:text-white"
           :class="message.role === 'human' ? 'self-end' : 'self-start'"
         >
           {{ message.content }}
