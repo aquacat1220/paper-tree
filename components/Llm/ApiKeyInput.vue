@@ -1,36 +1,30 @@
 <script setup lang="ts">
-import { useTextareaAutosize } from "@vueuse/core";
-
-const { textarea, input } = useTextareaAutosize();
-
-const emit = defineEmits<{
-  input: [input: string];
-}>();
-
-// Callback to trigger `input` event, so the parent can react accordingly.
-const notifyInput = () => {
-  emit("input", input.value);
-  input.value = "";
-};
+const input = ref("");
 
 // Send input on "Enter", but not "Shift+Enter".
 const onKeyDown = (event: KeyboardEvent) => {
   if (event.key === "Enter" && !event.shiftKey) {
     event.preventDefault();
-    notifyInput();
+    if (input.value.trim() === "") return;
+    const openaiApiKey = useCookie("openaiApiKey");
+    openaiApiKey.value = input.value;
   }
 };
 </script>
 
 <template>
   <div class="flex min-h-[15rem] min-w-[30rem] items-center justify-center">
-    <textarea
-      ref="textarea"
+    <UTextarea
       v-model="input"
-      class="max-h-full w-full flex-none resize-none bg-inherit p-2 text-center text-2xl text-white placeholder:text-3xl placeholder:text-neutral-500 focus-visible:outline-none"
+      class="flex h-full grow basis-0 items-center justify-center"
+      textarea-class="max-h-full text-center text-2xl text-black dark:text-white placeholder:text-3xl placeholder:text-primary-500 placeholder:dark:text-primary-400"
+      color="primary"
+      variant="none"
       placeholder="Enter your OpenAI API key"
-      autofocus
+      autoresize
+      :rows="1"
+      size="xl"
       @keydown="onKeyDown"
-    ></textarea>
+    />
   </div>
 </template>

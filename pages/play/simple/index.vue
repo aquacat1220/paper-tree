@@ -10,9 +10,13 @@ import {
 const openaiApiKey = useCookie("openaiApiKey");
 openaiApiKey.value = openaiApiKey.value || "";
 
-const onLlmApiKeyInput = (input: string) => {
+const setApiKey = (input: string) => {
   const apiKey = input.trim();
   openaiApiKey.value = apiKey;
+};
+
+const forgetApiKey = () => {
+  openaiApiKey.value = "";
 };
 
 const createSimpleChain = () => {
@@ -40,11 +44,29 @@ const createSimpleChain = () => {
 const simpleChain = computed(createSimpleChain);
 
 const history = ref([] as { role: string; content: string }[]);
+const loading = ref(false);
 
-const onLlmInput = async (input: string) => {
+const invokeChain = async (input: string) => {
+  loading.value = true;
   history.value.push({ role: "human", content: input });
-  const answer = await simpleChain.value.invoke(input);
-  history.value.push({ role: "LLM", content: answer });
+
+  try {
+    const answer = await simpleChain.value.invoke(input);
+    history.value.push({ role: "LLM", content: answer });
+  } catch (e) {
+    let errorMessage = "";
+    if (e instanceof Error) {
+      errorMessage = e.message;
+    } else if (typeof e === "string") {
+      errorMessage = e;
+    } else {
+      errorMessage =
+        "Unknown error has occured! Try refreshing your browser, and delete the cookies.";
+    }
+    history.value.push({ role: "System", content: errorMessage });
+  }
+
+  loading.value = false;
 };
 </script>
 
@@ -53,16 +75,22 @@ const onLlmInput = async (input: string) => {
     class="flex min-h-[15rem] min-w-[30rem] flex-col items-center justify-center"
   >
     <template v-if="openaiApiKey === ''">
-      <LlmApiKeyInput class="basis-[20rem]" @input="onLlmApiKeyInput" />
+      <LlmApiKeyInput class="basis-[20rem]" @input="setApiKey" />
     </template>
     <template v-else>
-      <LlmHistory
-        class="w-full max-w-[75rem] grow basis-0"
-        :history="history"
+      <LlmChat
+        :messages="history"
+        placeholder="Ask LLM"
+        :loading
+        class="mb-4 w-full max-w-[50rem] grow basis-0"
+        @send="invokeChain"
       />
-      <LlmInput
-        class="mb-14 max-h-[20rem] w-full max-w-[75rem] flex-none"
-        @input="onLlmInput"
+      <UButton
+        class="mb-4 flex-none"
+        size="xl"
+        label="Forget OpenAI API key"
+        variant="link"
+        @click="forgetApiKey"
       />
     </template>
   </div>
