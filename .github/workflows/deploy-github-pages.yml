@@ -9,7 +9,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      NUXT_APP_BASE_URL: /paper-tree
+      NUXT_APP_BASE_URL: ${GITHUB_REPOSITORY#*/}
     steps:
       - uses: actions/checkout@v4
       - run: corepack enable
