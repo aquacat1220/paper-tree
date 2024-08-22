@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const props = defineProps<{
-  messages: { role: string; content: string }[]; // History of messages to display.
+  messages: { alignRight: boolean; content: string }[]; // History of messages to display.
   placeholder: string; // Placeholder for chat input.
   loading: boolean;
 }>();
@@ -36,7 +36,7 @@ const onKeyDown = (event: KeyboardEvent) => {
       <template v-for="message in messages" :key="message.content">
         <div
           class="bg-primary-500 dark:bg-primary-500 my-4 max-w-[70%] whitespace-pre-wrap break-words rounded-[1.75rem] px-4 py-3 text-white dark:text-white"
-          :class="message.role === 'human' ? 'self-end' : 'self-start'"
+          :class="message.alignRight ? 'self-end' : 'self-start'"
         >
           {{ message.content }}
         </div>

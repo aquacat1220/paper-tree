@@ -8,11 +8,12 @@ const route = useRoute();
   >
     <div class="flex h-10 w-full flex-none items-center justify-center">
       <div class="flex min-w-[20rem] basis-[80rem] justify-between">
-        <div
+        <NuxtLink
           class="flex-none p-2 text-2xl font-bold text-black dark:text-white"
+          to="/"
         >
           paper-tree
-        </div>
+        </NuxtLink>
         <div
           class="flex-none p-2 text-2xl font-bold text-black dark:text-white"
         >

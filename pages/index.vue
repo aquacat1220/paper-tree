@@ -5,5 +5,11 @@
     <NuxtLink class="text-3xl text-black dark:text-white" to="/play/simple">
       /play/simple
     </NuxtLink>
+    <NuxtLink
+      class="text-3xl text-black dark:text-white"
+      to="/play/conversational"
+    >
+      /play/conversational
+    </NuxtLink>
   </div>
 </template>
