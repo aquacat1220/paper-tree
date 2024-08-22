@@ -72,7 +72,7 @@ const invokeChain = async (input: string) => {
 
 <template>
   <div
-    class="flex min-h-[20rem] min-w-[30rem] flex-col items-center justify-center gap-4 px-4 pb-4"
+    class="flex min-h-[20rem] min-w-[22rem] flex-col items-center justify-center gap-4 px-4 pb-4"
   >
     <template v-if="openaiApiKey === ''">
       <LlmApiKeyInput class="w-full max-w-[40rem] basis-[20rem]" />
